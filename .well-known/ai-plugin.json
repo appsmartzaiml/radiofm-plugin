@@ -9,7 +9,7 @@
     },
     "api": {
         "type": "openapi",
-        "url": "https://YOUR_DOMAIN/.well-known/openapi.yaml",
+        "url": "https://radiofm-plugin.vercel.app/.well-known/openapi.yaml",
         "is_user_authenticated": false
     },
     "logo_url": "https://my-mcp-server-flame.vercel.app/UpdatedRFMIcon.png",

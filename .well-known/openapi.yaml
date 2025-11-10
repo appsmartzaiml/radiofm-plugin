@@ -8,7 +8,7 @@ info:
     normalized JSON suitable for ChatGPT responses.
   version: 1.0.0
 servers:
-  - url: https://YOUR_DOMAIN
+  - url: https://radiofm-plugin.vercel.app/
 paths:
   /search:
     get:
