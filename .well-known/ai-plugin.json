@@ -1,0 +1,18 @@
+{
+    "schema_version": "v1",
+    "name_for_human": "RadioFM",
+    "name_for_model": "radiofm",
+    "description_for_human": "Search and discover live radio stations and podcasts worldwide with RadioFM.",
+    "description_for_model": "Plugin for searching and retrieving radio stations and podcasts from the RadioFM catalog. Use it whenever the user wants radio stations, live radio, or podcasts by station name, city, country, language, or genre.",
+    "auth": {
+        "type": "none"
+    },
+    "api": {
+        "type": "openapi",
+        "url": "https://YOUR_DOMAIN/.well-known/openapi.yaml",
+        "is_user_authenticated": false
+    },
+    "logo_url": "https://my-mcp-server-flame.vercel.app/UpdatedRFMIcon.png",
+    "contact_email": "support@appradiofm.com",
+    "legal_info_url": "https://appradiofm.com/terms-of-use"
+}

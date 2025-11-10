@@ -1,0 +1,142 @@
+openapi: 3.0.1
+info:
+  title: RadioFM ChatGPT Plugin API
+  description: |
+    RadioFM brings the world’s radio stations and podcasts directly into ChatGPT.
+    Use this API to search stations and podcasts by station name, city, country,
+    language, or genre. The API proxies the official RadioFM backend and returns
+    normalized JSON suitable for ChatGPT responses.
+  version: 1.0.0
+servers:
+  - url: https://YOUR_DOMAIN
+paths:
+  /search:
+    get:
+      operationId: searchRadioStations
+      summary: Search for radio stations and podcasts
+      description: >
+        Search and discover live radio stations and podcasts from RadioFM by
+        entering a station name, location, country, language, or genre.
+        Always call this when the user asks for radio stations or podcasts.
+      parameters:
+        - name: query
+          in: query
+          description: >
+            Search query (e.g., "BBC", "India", "Hindi", "Jazz", "top radio in USA").
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful search response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  query:
+                    type: string
+                    description: Echo of the search query.
+                  totalStations:
+                    type: integer
+                    description: Number of stations returned.
+                  totalPodcasts:
+                    type: integer
+                    description: Number of podcasts returned.
+                  stations:
+                    type: array
+                    description: Matching radio stations.
+                    items:
+                      $ref: "#/components/schemas/Station"
+                  podcasts:
+                    type: array
+                    description: Matching podcasts.
+                    items:
+                      $ref: "#/components/schemas/Podcast"
+        "400":
+          description: Bad request, missing or invalid query parameter.
+        "500":
+          description: Internal server error.
+components:
+  schemas:
+    Station:
+      type: object
+      properties:
+        id:
+          type: string
+          description: RadioFM station ID.
+        name:
+          type: string
+        logo:
+          type: string
+          nullable: true
+        website:
+          type: string
+          nullable: true
+        shortUrl:
+          type: string
+          description: Short slug used by RadioFM.
+        genre:
+          type: string
+        languageCode:
+          type: string
+          description: Language code as stored by RadioFM.
+        language:
+          type: string
+          description: Readable language name.
+        frequency:
+          type: string
+          nullable: true
+          description: Broadcast frequency if available.
+        city:
+          type: string
+        state:
+          type: string
+        countryName:
+          type: string
+        countryCode:
+          type: string
+        playCount:
+          type: integer
+        favoriteCount:
+          type: integer
+        streamUrl:
+          type: string
+          description: Direct streaming URL.
+        streamType:
+          type: string
+        streamBitrate:
+          type: string
+        deeplink:
+          type: string
+          description: Deep link into the RadioFM app.
+        listenUrl:
+          type: string
+          description: Web playback URL on appradiofm.com.
+    Podcast:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+        language:
+          type: string
+        image:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        category:
+          type: string
+        totalStream:
+          type: integer
+        deeplink:
+          type: string
+          description: Deep link into the RadioFM app.
+        countryCode:
+          type: string
