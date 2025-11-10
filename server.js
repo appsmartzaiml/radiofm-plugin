@@ -30,7 +30,7 @@ function mapRadioStation(station) {
         id: station.st_id,
         name: station.st_name,
         logo: station.st_logo,
-        website: station.st_weburl,
+        // website: station.st_weburl,
         shortUrl: station.st_shorturl,
         genre: station.st_genre,
         languageCode: station.st_lang,

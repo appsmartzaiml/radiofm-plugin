@@ -70,9 +70,9 @@ components:
         logo:
           type: string
           nullable: true
-        website:
-          type: string
-          nullable: true
+        # website:
+        #   type: string
+        #   nullable: true
         shortUrl:
           type: string
           description: Short slug used by RadioFM.
